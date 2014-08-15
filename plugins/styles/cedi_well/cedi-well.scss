@@ -1,0 +1,30 @@
+.cedi-well, .cedi-well-sm, .cedi-well-md, .cedi-well-lg {
+  padding: 15px;
+}
+
+.cedi-well {
+  min-height: 20px;
+  margin-bottom: 20px;
+  // @todo: Get back to this (colorizer)
+//  background-color: @bg;
+//  border: 1px solid #e3e3e3;
+//  border-radius: 4px;
+}
+
+.cedi-well-sm {
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+}
+
+.cedi-well-md {
+  border-radius: 12px;
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+}
+
+.cedi-well-lg {
+  border-radius: 18px;
+  -webkit-border-radius: 18px;
+  -moz-border-radius: 18px;
+}

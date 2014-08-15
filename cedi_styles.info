@@ -1,0 +1,9 @@
+name = Cedi Styles
+description = Adds custom panels styles.
+core = 7.x
+package = Cedi
+
+files[] = includes/border.form.inc
+files[] = includes/color.form.inc
+files[] = includes/shadow.form.inc
+files[] = includes/width.form.inc

@@ -1,0 +1,11 @@
+.image-button-parent {
+  position: relative;
+  height: 250px;
+  overflow: hidden;
+  .btn {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    padding: 1px 10px;
+  }
+}

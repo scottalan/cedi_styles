@@ -1,0 +1,57 @@
+@import "compass";
+@import "extra";
+
+// Cedi pane
+// --------------------------------------------------
+.cedi-pane,
+body.page-node-edit #main .burr-flipped-sidebar-inner,
+body.page-node-add #main .burr-flipped-sidebar-inner {
+  border: 1px solid #e3e3e3;
+  border-bottom: 0;
+  @include border-radius(4px);
+  .panel-pane {
+    padding: 0;
+    border: 0;
+    border-bottom: 1px solid #e3e3e3;
+    margin-bottom: 0;
+    padding-bottom: 15px;
+  }
+  &.inner-pane .panel-pane {
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+  .pane-title {
+    font-size: 20px;
+    line-height: 32px;
+    margin: 0;
+    padding: 10px 15px;
+    color: #333;
+    @include box-gradient-vertical($navbarBackgroundHighlight, darken($navbarBackground, 5%));
+  }
+  .pane-content {
+    padding: 15px 15px 0 15px;
+    .oa-list {
+      margin-left: -16px;
+      margin-right: -16px;
+    }
+  }
+  .pane-section-sidebar-top {
+    padding: 0;
+    > .pane-content {
+      padding: 0;
+    }
+  }
+  .pane-default-section-sidebar {
+    padding: 0;
+    > .pane-content {
+      padding: 0;
+    }
+  }
+  .oa-list {
+    margin-left: -1px;
+    margin-right: -1px;
+  }
+  .pager {
+    margin-top: 15px;
+  }
+}

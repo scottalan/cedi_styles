@@ -1,0 +1,126 @@
+<?php
+
+/**
+ * @file cedi_styles.module
+ *
+ * Adds several custom panels styles that are available to content places in
+ * pages and mini-panels.
+ */
+
+/**
+ * Set a variable for the colorizer stylesheet for the plugin.
+ *
+ * @param string $name
+ *   The name of the plugin that will use the stylesheet.
+ */
+//function cedi_styles_colorizer_set_stylesheet_path($name) {
+//  $module = drupal_get_path('module', 'cedi_styles');
+//  $path = $module . 'plugins/styles/' . $name . '/colorizer_' . $name . '.css';
+//  variable_set('colorizer_' . $name . '_stylesheet', $path);
+//}
+
+function cedi_styles_ctools_plugin_directory($plugin, $plugin_type) {
+  if ($plugin == 'panels') {
+    return "plugins/$plugin_type";
+  }
+}
+
+/**
+ * @todo Make this a wrapper that returns the forms from one api call.
+ *
+ * @param $styles
+ */
+function cedi_styles_include_styles($styles) {
+  foreach ($styles as $style) {
+    switch ($style) {
+      case 'color':
+        break;
+      case 'width':
+        break;
+      case 'border':
+        break;
+      case 'shadow':
+        break;
+    }
+  }
+}
+
+/**
+ * Adds a panels separator.
+ *
+ * @param array $vars
+ *  The variables being passed.
+ *
+ * @return string
+ *   HTML for panels separator.
+ */
+function cedi_styles_add_separator($vars) {
+  $sep = '<div class="panel-separator"></div>';
+  // add separator to end also because panels ipe js removes the last one
+  return implode($sep, $vars['panes']) . $sep;
+}
+
+/**
+ * Wrapper for adding css to style plugins.
+ *
+ * @param string $type
+ *   Whether this is a 'module' or 'theme'.
+ * @param string $name
+ *   The name of the module or theme.
+ * @param $style
+ *   The name of the style plugin.
+ */
+function cedi_styles_add_css($path, $file) {
+
+  drupal_add_css($path . '/' . $file);
+}
+
+function cedi_styles_panels_styles_get_fields($vars) {
+  if (isset($vars['content']->content['#entity_type']) && isset($vars['content']->content['#bundle'])) {
+    return field_info_instances($vars['content']->content['#entity_type'], $vars['content']->content['#bundle']);
+  }
+  return array();
+}
+
+function cedi_styles_plugin_styles_extras(&$form, $settings) {
+  //drupal_add_css(drupal_get_path('module', 'cedi_styles') . '/cedi-styles.css');
+
+  cedi_styles_include_plugins();
+
+//  drupal_add_js(drupal_get_path('module', 'cedi_styles') . '/cedi_styles.js');
+
+  $classes = array();
+
+  foreach ($settings as $setting => $value) {
+    if (in_array($setting, $possible)) {
+      $classes[$setting] = $value;
+    }
+  }
+
+  // Add the target element to the classes array.
+  if (isset($settings['element'])) {
+    $classes['element'] = $settings['element'];
+  }
+
+  drupal_add_js(array('cediStyles' => array('classes' => $classes)), 'setting');
+}
+
+function cedi_styles_include_plugins() {
+  $plugins = ctools_get_plugins('panels', 'styles');
+
+  foreach ($plugins as $plugin => $info) {
+    module_load_include('inc', $info['module'], $info['name']);
+  }
+}
+
+/**
+ * Alter the instance for the colorizer admin form.
+ */
+//function cedi_styles_colorizer_instance_alter(&$instance, &$other) {
+//  $instance = 'oa_styles_well';
+//  $other = array(
+//    'module' => 'cedi_styles',
+//    'plugin' => $instance,
+//    'type' => 'style',
+//  );
+//}
