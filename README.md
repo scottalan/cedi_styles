@@ -1,4 +1,5 @@
-### Sponsored by CEDI http://cedi.com
+### Sponsored by [CEDI](http://cedi.com)
 
-# Adds custom styles to panels
+# Custom panels styles
 
+To use this module, you will need to have [Compass](http://compass-style.org/) installed.
